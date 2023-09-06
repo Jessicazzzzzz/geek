@@ -4,9 +4,13 @@ import App from './App'
 // 需要安装包npm i sass
 import  '@scss/index.scss';
 
+import { Provider } from 'react-redux'
+import store from './store'
+
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(
- 
+  <Provider store={store}>
     <App />
+    </Provider>
 
 )

@@ -18,24 +18,7 @@ module.exports = {
     style: {
       postcss:{
         mode:'file',
-        // plugins:[require('postcss-px-to-viewport-8-plugin')({
-        //   viewportWidth: 375,
-        //   exclude: [/node_modules/],
-        //   unitToConvert: 'px',
-    
-        // unitPrecision: 5,
-        // propList: ['*'],
-        // viewportUnit: 'vw',
-        // fontViewportUnit: 'vw',
-        // selectorBlackList: [],
-        // minPixelValue: 1,
-        // mediaQuery: false,
-        // replace: true,
-    
-        // landscape: false,
-        // landscapeUnit: 'vw',
-        // landscapeWidth: 568
-        // })]
+      
        }
     
     }

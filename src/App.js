@@ -1,18 +1,25 @@
+import React, { Suspense } from 'react'
 
-import { Button,Toast} from 'antd-mobile'
-import  './box.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+const Login = React.lazy(() => import('@/pages/Login'))
+const Home = React.lazy(() => import('@/pages/Home'))
 
 export default function App() {
   return (
-    <div>
-      <Button color='primary' fill='solid'  onClick={() => {
-              Toast.show({
-                icon: 'loading',
-                content: '加载中…',
-              })
-            }}
-              > loading</Button>
-          <div className='box'>hello</div>
-    </div>
+    <Suspense fallback={<div></div>}>
+    
+      <Router>
+        <div className="app">
+          {/* <Link to={'/login'}>登录</Link>
+      <Link to={'/home'}>首页</Link> */}
+        </div>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+        </Routes>
+      </Router>
+  
+    </Suspense>
   )
 }
