@@ -1,0 +1,57 @@
+
+
+.root{
+  position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 46px;
+   width: 100%;
+   background-color: #fff;
+  
+  //  border-bottom: 1px solid #ccc;
+   font-size: 16px;
+    :global{
+      .left{
+        padding-left: 12px;
+      }
+      .title{
+      
+        color: #323232;
+        
+      }
+      .right{
+        width: 48px;
+        padding-right: 16px;
+      }
+    
+    }
+  
+    // deal with 1px on different device
+    &::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      border-bottom:1px solid #ccc;
+      color:#ccc;
+      height: 200%;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      @media screen and (min-device-pixel-ratio:3),(-webkit-min-device-pixel-ratio:3){
+        width: 300%;
+        height: 300%;
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33);
+      }
+    
+  }
+  
+  
+    
+  }
