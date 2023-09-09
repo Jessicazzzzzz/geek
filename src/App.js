@@ -6,20 +6,23 @@ const Home = React.lazy(() => import('@/pages/Home'))
 
 export default function App() {
   return (
-    <Suspense fallback={<div></div>}>
+    
     
       <Router>
-        <div className="app">
+        <div className="app" >
           {/* <Link to={'/login'}>登录</Link>
       <Link to={'/home'}>首页</Link> */}
+      <span data-testid='hi'>hi,okay</span>
         </div>
+        <Suspense fallback={<div></div>}>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/home" element={<Home />}></Route>
         </Routes>
+        </Suspense>
       </Router>
   
-    </Suspense>
+   
   )
 }
