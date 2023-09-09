@@ -1,7 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import homeReducer from '@/store/home'
+import loginReducer from '@/store/login'
 export default configureStore({
   reducer: {
-    homereducer:homeReducer
-  }
+    login:loginReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+  
+    serializableCheck: false,
+  }),
 })
