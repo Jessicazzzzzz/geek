@@ -89,7 +89,7 @@ export default function Login(props) {
            maskClickable: false,
            })
 
-      //navigate to home 
+      // navigate to home 
        navigate('/home')
     },
     
