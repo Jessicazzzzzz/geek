@@ -5,13 +5,20 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import {fetchData} from '../../store/login/index'
+import { fetchData,fetchAuthData} from '../../store/login/index'
 import {  Toast } from 'antd-mobile'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import {getLoginAuth} from '../../utils/login'
 export default function Login(props) {
+
+  const navigate = useNavigate()
   const [time,setTime]=useState(0)
-  const { getCodeInfo} = useSelector((state)=>({getCodeInfo:state.login.getCodeInfo}),shallowEqual)
+  const { getCodeInfo,getAuthInfo} = useSelector((state)=>({getCodeInfo:state.login.getCodeInfo,getAuthInfo:state.login.getAuthInfo}),shallowEqual)
+
+
   const dispatch = useDispatch()
+  
   const onExtraClick =async () => {
     if(time>0) return
     if(!/^1[3-9]\d{9}/.test(mobile)){
@@ -22,7 +29,8 @@ export default function Login(props) {
     }
     
     
-     await dispatch(fetchData(mobile))
+   await dispatch(fetchData(mobile))
+   
     
     if(getCodeInfo?.data?.message){
       console.log('123');
@@ -63,7 +71,6 @@ export default function Login(props) {
     
    
   }
-  // use formik  to validate form 
   const formik = useFormik({
     initialValues: {
       mobile: '14566787899',
@@ -73,8 +80,17 @@ export default function Login(props) {
     mobile:Yup.string().required("phone number is not allowed empty").matches(/^1[3-9]\d{9}$/,'format is wrong'),
     code:Yup.string().required('code must have').matches(/^\d{6}/,'wrong code')
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+   async onSubmit(values){
+    //  await dispatch(getLoginAuth(values))
+     await dispatch(fetchAuthData(values))
+     console.log("getLoginAuthInfo",getAuthInfo);
+      Toast.show({
+            content: `登录成功`,
+           maskClickable: false,
+           })
+
+      //navigate to home 
+       navigate('/home')
     },
     
   })
@@ -89,6 +105,7 @@ export default function Login(props) {
     isValid
     
   } = formik
+ 
   return (
     <div className={styles.root}>
       <NavBar>首页</NavBar>

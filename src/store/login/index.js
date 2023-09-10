@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import {getCodeData} from '../../utils/login'
+import {getCodeData,getLoginAuth} from '../../utils/login'
 export const fetchData = createAsyncThunk("fetchData", (payload,{dispatch})=>{
    getCodeData(payload).then(res=>{
         dispatch(getMobileDataAction(res))
@@ -8,20 +8,38 @@ export const fetchData = createAsyncThunk("fetchData", (payload,{dispatch})=>{
 
    })
   
+
+  
 })
+export const fetchAuthData = createAsyncThunk("fetchAuthData",async  (payload,{dispatch})=>{
+ 
+
+const res =   await getLoginAuth(payload)
+  console.log(res);
+   dispatch(getLoginAuthAction(res))
+  return res
+  }
+  
+  )
+
+
 
 export const counterSlice = createSlice({
   name: 'login',
   initialState: {
-    getCodeInfo:{}
+    getCodeInfo:{},
+    getAuthInfo:{}
   },
   reducers: {
     getMobileDataAction(state,action){
       state.getCodeInfo =action.payload
+    },
+    getLoginAuthAction(state,action){
+      state.getAuthInfo = action.payload
     }
   }
 })
 
-export const {  getMobileDataAction } = counterSlice.actions
+export const {  getMobileDataAction , getLoginAuthAction} = counterSlice.actions
 
 export default counterSlice.reducer
