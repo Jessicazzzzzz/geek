@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { BASE_URL, TIMEOUT } from './config'
 import { Toast } from 'antd-mobile'
+import { getTokenInfo } from './storage'
 class Request {
   constructor(baseURL, timeout) {
     // 如果传入url ,自动加在baseURL后面
@@ -8,10 +9,24 @@ class Request {
       baseURL,
       timeout,
     })
+    axios.interceptors.request.use(function (config) {
+      // 在发送请求之前做些什么
+      const token = getTokenInfo().token
+      if(token){
+        config.headers.Authorization='Bearer '+token
+      }
+      return config;
+    }, function (error) {
+      // 对请求错误做些什么
+      return Promise.reject(error);
+    });
 
     // 响应拦截
     this.instance.interceptors.response.use(
       (res) => {
+           
+     
+
         return res.data
       },
       (err) => {

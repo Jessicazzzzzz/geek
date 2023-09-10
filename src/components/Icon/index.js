@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
  function Icon({ type,className,...rest}) {
   return (
     <svg {...rest} className={classNames('icon',className)} aria-hidden="true" data-testid="svg"  >
-      <use xlinkHref={`#${type}`}></use>
+      <use xlinkHref={`#${type}`} ></use>
     </svg>
   )
 }
