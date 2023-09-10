@@ -30,25 +30,40 @@ export default function Login(props) {
         icon: 'success',
         content: 'get code succeed',
        })
-       setTime(60)
-        setInterval(()=>{
-          setTime(time=>time-1)
+       setTime(5)
+       // make sure get correct time
+       let timeId=  setInterval(()=>{
+          setTime(time=>{
+            if(time===1){
+              clearInterval(timeId)
+             }
 
+    return time-1
+          })
+            
         },1000)
 
      }else if(Object.keys(getCodeInfo).length!==0){
-      console.log('456');
-      console.log();
+      
+     
       Toast.show({
         content: `${getCodeInfo}`,
        maskClickable: false,
        })
+     }else if(Object.keys(getCodeInfo).length===0){
+      
+     
+      Toast.show({
+        content: `serve busy try it later`,
+       maskClickable: false,
+       })
      }
-    console.log(getCodeInfo);
+   
    
     
    
   }
+  // use formik  to validate form 
   const formik = useFormik({
     initialValues: {
       mobile: '14566787899',
