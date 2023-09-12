@@ -9,8 +9,9 @@ class Request {
       baseURL,
       timeout,
     })
-    axios.interceptors.request.use(function (config) {
+    this.instance.interceptors.request.use(function (config) {
       // 在发送请求之前做些什么
+      // before request what you can prepared 
       const token = getTokenInfo().token
       if(token){
         config.headers.Authorization='Bearer '+token
@@ -18,6 +19,7 @@ class Request {
       return config;
     }, function (error) {
       // 对请求错误做些什么
+      // what you can do for wrong request 
       return Promise.reject(error);
     });
 
@@ -25,8 +27,6 @@ class Request {
     this.instance.interceptors.response.use(
       (res) => {
            
-     
-
         return res.data
       },
       (err) => {

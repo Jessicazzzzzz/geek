@@ -18,7 +18,7 @@ export default function AppBar() {
     loc.pathname = '/home'
   }
   return (
-    <div className={styles.root}>
+
     <div className="tabbar">
         {tabBar.map((item) => (
           <div
@@ -36,6 +36,6 @@ export default function AppBar() {
           </div>
         ))}
       </div>
-      </div>
+      
   )
 }

@@ -1,0 +1,46 @@
+.root {
+  height: 100%;
+
+  :global {
+
+    .img {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    .wrapper {
+      background-color: #f7f8fa;
+    }
+
+    .profile-list {
+ 
+
+      &:nth-child(2) {
+        margin-top: 12px;
+      }
+
+    }
+
+   
+
+    .logout {
+      position: absolute;
+      bottom: 60px;
+      width: 100%;
+      height: 44px;
+      padding: 0 16px;
+
+      .btn {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        background: linear-gradient(315deg, #fe4f4f, #fc6627);
+      }
+    }
+  }
+}
+

@@ -1,29 +1,31 @@
 @import '@scss/hairline.scss';
 
 .root{
-  position: relative;
+
+  // position: relative;
    display: flex;
-   justify-content: space-between;
    align-items: center;
    height: 46px;
-   width: 100%;
+   width: 100vw;
+   padding:0 12px 0 12px;
    background-color: #fff;
   
   //  border-bottom: 1px solid #ccc;
   @include hairlinebottom();
    font-size: 16px;
     :global{
-      .left{
-        padding-left: 12px;
-      }
+     
       .title{
-      
+        flex: 1;
+
+        display: flex;
+        justify-content: center;
         color: #323232;
         
       }
       .right{
         width: 48px;
-        padding-right: 16px;
+      
       }
     
     }

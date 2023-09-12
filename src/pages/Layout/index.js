@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import styles from './index.module.scss'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
 // import Home from '../Home'
 import AppBar from '@/components/AppBar'
@@ -25,9 +25,9 @@ export default function Layout() {
   console.log(loc)
   return (
     <div className={styles.root}>
-      我是layout
+     
       <div className="tab-content">
-       
+       <Outlet/>
       </div>
       {/* <div className="tabbar">
         {tabBar.map((item) => (

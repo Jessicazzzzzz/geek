@@ -13,10 +13,16 @@ import {useNavigate} from 'react-router-dom'
 //   return ComponetnWithRouterProp
 
 // } 
- function NavBar({children,extra}) {
+ function NavBar({children,extra,onLeftClick}) {
   const navigate = useNavigate()
+  console.log(onLeftClick);
   const back =()=>{
-   console.log(navigate(-1));
+    if(onLeftClick){
+      onLeftClick()
+    }else{
+      navigate(-1)
+    }
+  //  console.log(navigate(-1));
    
   }
   
