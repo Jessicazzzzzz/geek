@@ -7,12 +7,16 @@ import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchData,fetchAuthData} from '../../store/login/index'
 import {  Toast } from 'antd-mobile'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState,useEffect } from 'react';
+import { useNavigate ,useLocation} from 'react-router-dom';
+import { createBrowserHistory } from "history";
+// ...
 // import {getLoginAuth} from '../../utils/login'
 export default function Login(props) {
 
   const navigate = useNavigate()
+  const location = useLocation()
+  let history = createBrowserHistory()
   const [time,setTime]=useState(0)
   const { getCodeInfo,getAuthInfo} = useSelector((state)=>({getCodeInfo:state.login.getCodeInfo,getAuthInfo:state.login.getAuthInfo}),shallowEqual)
 
@@ -71,6 +75,7 @@ export default function Login(props) {
     
    
   }
+
   const formik = useFormik({
     initialValues: {
       mobile: '14566787899',
@@ -90,7 +95,10 @@ export default function Login(props) {
            })
 
       // navigate to home 
-       navigate('/home')
+      
+      history.back()
+     
+      //  navigate('/home')
     },
     
   })
@@ -105,10 +113,12 @@ export default function Login(props) {
     isValid
     
   } = formik
- 
+ const handlelftClick=()=>{
+  navigate('/home')
+ }
   return (
     <div className={styles.root}>
-      <NavBar>首页</NavBar>
+      <NavBar onLeftClick={handlelftClick}>首页</NavBar>
       {/* login form  */}
       <div className="content">
         <h3>短信登录</h3>
@@ -120,6 +130,7 @@ export default function Login(props) {
               name="mobile"
               autoComplete="off"
              onBlur={handleBlur}
+             
               onChange={handleChange}
               value={mobile}
             />

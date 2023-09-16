@@ -2,6 +2,7 @@ import axios from 'axios'
 import { BASE_URL, TIMEOUT } from './config'
 import { Toast } from 'antd-mobile'
 import { getTokenInfo } from './storage'
+
 class Request {
   constructor(baseURL, timeout) {
     // 如果传入url ,自动加在baseURL后面
@@ -34,9 +35,11 @@ class Request {
         console.log("axio" ,err);
         if(err.response?.data){
           Toast.show({
-            content: `log in failed`,
+            content: `log in first`,
            maskClickable: false,
            })
+          
+           
         }
 
         return err
@@ -52,6 +55,9 @@ class Request {
   }
   post(config) {
     return this.request({ ...config, method: 'post' })
+  }
+  patch(config) {
+    return this.request({ ...config, method: 'patch' })
   }
 }
 const MyRequest = new Request(BASE_URL, TIMEOUT)

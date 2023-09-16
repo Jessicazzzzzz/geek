@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {getUser,getProfile} from '@/utils/profile'
+import {getUser,getProfile,updateProfile, updatePhoto} from '@/utils/profile'
 export const getUserData = createAsyncThunk('getUserInfo',async (payload,{dispatch})=>{
    const res = await  getUser()
   //  console.log(res);
@@ -13,9 +13,21 @@ export const getProfileData = createAsyncThunk('getUserInfo',async (payload,{dis
   return res
 })
 
+export const updateProfileData = createAsyncThunk('updateProfile', async (payload,{dispatch})=>{
+  const res = await updateProfile(payload)
+  console.log(res);
+  dispatch(getProfileData())
+  return res
+})
+export const updatePhotoData = createAsyncThunk('updatephoto',async (payload,{dispatch})=>{
+  const res = await updatePhoto(payload)
+  console.log(res);
+  dispatch(getProfileData())
+  return res
+})
 
 export const userSlicer = createSlice({
-  name:"user",
+  name:"user", 
   initialState:{
     getUserInfo:{
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import Icon from '../../components/Icon'
 import styles from './index.module.scss'
-
+import classNames from 'classnames'
 import {useNavigate} from 'react-router-dom'
+import { createBrowserHistory } from "history";
 // function withRouter(Cpn){
 //   function ComponetnWithRouterProp(props){
 //     const location = useLocation()
@@ -13,22 +14,24 @@ import {useNavigate} from 'react-router-dom'
 //   return ComponetnWithRouterProp
 
 // } 
- function NavBar({children,extra,onLeftClick}) {
+ function NavBar({children,extra,onLeftClick,className}) {
   const navigate = useNavigate()
-  console.log(onLeftClick);
+  // console.log(onLeftClick);
+  const history = createBrowserHistory()
   const back =()=>{
     if(onLeftClick){
       onLeftClick()
     }else{
-      navigate(-1)
+      // navigate(-1)
+      history.back()
     }
-  //  console.log(navigate(-1));
+  
    
   }
   
 
   return (
-    <div className={styles.root}>
+    <div className={classNames(styles.root,className)}>
     <div className="left">
      <Icon type='icon-iconarrowl' onClick={back}/>
     </div>

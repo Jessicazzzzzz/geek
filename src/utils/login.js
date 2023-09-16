@@ -28,4 +28,4 @@ export function getLoginAuth(data){
     
   
   
-}
+  }

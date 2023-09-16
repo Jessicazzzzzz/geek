@@ -13,3 +13,17 @@ export function getProfile(){
     url:"/user/profile"
   })
 }
+
+export function updateProfile(data){
+  return MyRequest.patch({
+    url:"/user/profile",
+    data
+  })
+}
+export function updatePhoto(data){
+  return MyRequest.patch({
+    url:"/user/photo",
+    // headers:{'Content-Type': 'multipart/form-data'},
+    data
+  })
+}

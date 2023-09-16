@@ -1,11 +1,11 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import styles from './index.module.scss'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation} from 'react-router-dom'
 import classNames from 'classnames'
 // import Home from '../Home'
 import AppBar from '@/components/AppBar'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 // import QA from '../QA'
 // import Video from '../Video'
 // import Profile from '../Profile'
@@ -19,10 +19,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // ]
 
 export default function Layout() {
-  const nav = useNavigate()
+
  
   const loc = useLocation()
-  console.log(loc)
+  // console.log(loc)
   return (
     <div className={styles.root}>
      

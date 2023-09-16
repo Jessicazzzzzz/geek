@@ -2,7 +2,7 @@ import Icon from '@/components/Icon'
 
 
 import styles from './index.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getUserData } from '@/store/profile'
@@ -10,13 +10,16 @@ import { getUserData } from '@/store/profile'
 const Profile = () => {
 
   const dispatch = useDispatch()
-
+ const navigate= useNavigate()
   useEffect(()=>{
     dispatch(getUserData())
   },[dispatch])
 
  const user = useSelector(state=>state.user.getUserInfo)
-
+ const handleClick= ()=>{
+  console.log('xiaozhi');
+navigate('/chat')
+ }
   
   return (
     <div className={styles.root}>
@@ -89,7 +92,7 @@ const Profile = () => {
           </div>
           <div
             className="service-item"
-            
+            onClick={handleClick}
           >
             <Icon type="icon-jiqirentoubu" />
             <div>小智同学</div>

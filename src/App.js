@@ -9,34 +9,34 @@ import {
 
 import '@scss/index.scss'
 import Layout from './pages/Layout'
-
+import ProtectedRoute from '@/components/AuthRoute'
 const Login = React.lazy(() => import('@/pages/Login'))
 const Home = React.lazy(() => import('../src/pages/Home'))
 const QA = React.lazy(() => import('../src/pages/QA'))
 const Video = React.lazy(() => import('../src/pages/Video'))
 const Profile = React.lazy(() => import('../src/pages/Profile'))
 const Editor = React.lazy(() => import('../src/pages/Profile/Edit'))
+const Chat = React.lazy(()=>import('@/pages/Profile/Chat'))
 
 export default function App() {
   return (
     <Router>
-      <div className="app">
-       
-      </div>
+      <div className="app"></div>
 
       <Suspense fallback={<div></div>}>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/" element={<Layout />}></Route>
-          <Route path="/home" element={<Layout/>}>
-          <Route path="qa" element={<QA />}></Route>
-          <Route path="video" element={<Video />}></Route>
-          <Route path="profile" element={<Profile />}>
+          <Route path="/chat" element={<ProtectedRoute><Chat/></ProtectedRoute>}></Route>
+          <Route path="/home" element={<Layout />}>
+
+            <Route path="qa" element={<QA />}></Route>
+            <Route path="" element={<Home/>}></Route>
+            <Route path="video" element={<Video />}></Route>
+            <Route path="profile" element={<Profile />}></Route>
           </Route>
-          
-          </Route>
-          <Route path='/home/profile/editor' element={<Editor/>} />
-         
+          <Route path="/home/profile/editor" element={<ProtectedRoute><Editor /></ProtectedRoute>} />
+
         </Routes>
       </Suspense>
     </Router>

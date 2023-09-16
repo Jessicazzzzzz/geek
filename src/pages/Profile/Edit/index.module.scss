@@ -2,7 +2,10 @@
   height: 100%;
 
   :global {
-
+    .avatar-wrapper{
+      display: flex;
+      justify-content: flex-end;
+    }
     .img {
       display: block;
       width: 20px;
@@ -19,6 +22,20 @@
 
       &:nth-child(2) {
         margin-top: 12px;
+      }
+      .adm-list-item-content-extra {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+      }
+      .intro {
+       
+        color: #c8c9cc;
+
+        &.normal {
+          color: #3a3948;
+        }
       }
 
     }

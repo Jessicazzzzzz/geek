@@ -7,7 +7,7 @@ export const setTokenInfo=(tokenInfo)=>{
  localStorage.setItem(TOKEN_KEY,JSON.stringify(tokenInfo))
  
  }
-export const removeTkoneInfo=()=>{
+export const removeTokenInfo=()=>{
   localStorage.removeItem(TOKEN_KEY)
 }
 
