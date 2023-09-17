@@ -48,10 +48,16 @@ export const counterSlice = createSlice({
       state.getAuthInfo = {}
       removeTokenInfo()
 
+    },
+    getRefreshTokenAction(state,action){
+      console.log(action);
+      console.log(action.payload);
+      console.log(action.type);
+      state.getAuthInfo = action.payload
     }
   }
 })
 
-export const {  getMobileDataAction , getLoginAuthAction,logoutAction} = counterSlice.actions
+export const {  getMobileDataAction , getLoginAuthAction,logoutAction, getRefreshTokenAction} = counterSlice.actions
 
 export default counterSlice.reducer

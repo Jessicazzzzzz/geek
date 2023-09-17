@@ -1,5 +1,6 @@
 const TOKEN_KEY = 'geek'
 export const getTokenInfo=()=>{
+  if(localStorage.getItem(TOKEN_KEY)=== 'undefined')   return {}
  return JSON.parse(localStorage.getItem(TOKEN_KEY)) ||{}
 }
 
@@ -12,5 +13,5 @@ export const removeTokenInfo=()=>{
 }
 
 export const hasToken=()=>{
-  return !!getTokenInfo().token
+  return !!getTokenInfo().token &&  !!getTokenInfo().refresh_token 
 }

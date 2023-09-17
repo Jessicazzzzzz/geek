@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom'
-
+import history from '@/utils/history'
 import '@scss/index.scss'
 import Layout from './pages/Layout'
 import ProtectedRoute from '@/components/AuthRoute'
@@ -20,7 +20,7 @@ const Chat = React.lazy(()=>import('@/pages/Profile/Chat'))
 
 export default function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="app"></div>
 
       <Suspense fallback={<div></div>}>
@@ -33,7 +33,7 @@ export default function App() {
             <Route path="qa" element={<QA />}></Route>
             <Route path="" element={<Home/>}></Route>
             <Route path="video" element={<Video />}></Route>
-            <Route path="profile" element={<Profile />}></Route>
+            <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
           </Route>
           <Route path="/home/profile/editor" element={<ProtectedRoute><Editor /></ProtectedRoute>} />
 

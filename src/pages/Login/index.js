@@ -94,11 +94,11 @@ export default function Login(props) {
            maskClickable: false,
            })
 
-      // navigate to home 
-      
+     
+
       history.back()
      
-      //  navigate('/home')
+     
     },
     
   })
@@ -118,7 +118,7 @@ export default function Login(props) {
  }
   return (
     <div className={styles.root}>
-      <NavBar onLeftClick={handlelftClick}>首页</NavBar>
+      <NavBar  onLeftClick={handlelftClick}>首页</NavBar>
       {/* login form  */}
       <div className="content">
         <h3>短信登录</h3>
