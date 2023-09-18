@@ -27,3 +27,8 @@ export function updatePhoto(data){
     data
   })
 }
+export function getUserChannels(){
+  return MyRequest.get({
+    url:"/user/channels"
+  })
+}

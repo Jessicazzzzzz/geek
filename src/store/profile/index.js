@@ -1,11 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {getUser,getProfile,updateProfile, updatePhoto} from '@/utils/profile'
+import {getUser,getProfile,updateProfile, updatePhoto,getUserChannels} from '@/utils/profile'
+// import {getUserChannels} from '@/utils/channel'
 export const getUserData = createAsyncThunk('getUserInfo',async (payload,{dispatch})=>{
    const res = await  getUser()
   //  console.log(res);
    dispatch(getUserInfoAction(res.data))
    return res
 })
+
+
+ 
 export const getProfileData = createAsyncThunk('getUserInfo',async (payload,{dispatch})=>{
   const res = await  getProfile()
   // console.log(res);

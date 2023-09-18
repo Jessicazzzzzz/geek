@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client'
+import store from './store'
 import App from './App'
 
 // 导入通用样式
@@ -6,7 +7,6 @@ import App from './App'
 import  '@scss/index.scss';
 
 import { Provider } from 'react-redux'
-import store from './store'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(

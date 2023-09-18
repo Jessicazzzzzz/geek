@@ -18,11 +18,11 @@ import AppBar from '@/components/AppBar'
 //   { title: '我的', icon: 'icon-user', path: '/home/profile' },
 // ]
 
-export default function Layout() {
+function Layout() {
 
  
   const loc = useLocation()
-  // console.log(loc)
+ 
   return (
     <div className={styles.root}>
      
@@ -50,3 +50,5 @@ export default function Layout() {
     </div>
   )
 }
+
+export default Layout
