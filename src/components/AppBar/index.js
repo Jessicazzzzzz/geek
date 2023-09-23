@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
 
 const tabBar = [
-  { title: '首页', icon: 'icon-zhuye', path: '/home/index' },
+  { title: '首页', icon: 'icon-zhuye', path: '/home' },
   { title: '问答', icon: 'icon-bangzhu', path: '/home/qa' },
   { title: '视频', icon: 'icon-shipin_24', path: '/home/video' },
   { title: '我的', icon: 'icon-user', path: '/home/profile' },

@@ -28,12 +28,12 @@ export default function App() {
       <Suspense fallback={<div></div>}>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<Layout />}></Route>
+          <Route path="/" element={<Navigate to='/home'/>}></Route>
           <Route path="/chat" element={<ProtectedRoute><Chat/></ProtectedRoute>}></Route>
           <Route path="/home" element={<Layout/>}>
 
             <Route path="qa" element={<QA />}></Route>
-            <Route path="index" element={<Home/>}></Route>
+            <Route path="" element={<Home/>}></Route>
             <Route path="video" element={<Video />}></Route>
             <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
           </Route>

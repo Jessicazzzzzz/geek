@@ -118,6 +118,9 @@ class Request {
   patch(config) {
     return this.request({ ...config, method: 'patch' })
   }
+  delete(config) {
+    return this.request({ ...config, method: 'delete' })
+  }
 }
 const MyRequest = new Request(BASE_URL, TIMEOUT)
 export default MyRequest
