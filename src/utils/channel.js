@@ -29,3 +29,13 @@ export function addChannel(data){
   })
 
 }
+
+export function getArticles(params){
+  return MyRequest.get({
+    url:"/articles",
+    params
+
+
+  })
+
+}

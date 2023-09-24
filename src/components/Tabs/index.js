@@ -78,10 +78,18 @@ const Tabs = ({ index = 0, tabs = [], children, onChange }) => {
         </div>
 
         <div className="tabs-content">
-          {React.Children.map(children, (child) => {
-            return React.cloneElement(child, {
-              activeId: tabs[activeIndex]?.id || 0,
-            })
+          {React.Children.map(children, (child,index) => {
+
+            return (
+              <div className='tabs-content-wrap' style={{display:index===activeIndex?'block':'none'}}>
+            {
+              React.cloneElement(child, {
+                activeId: tabs[activeIndex]?.id || 0,
+              })
+            } 
+              </div>
+            )
+            
           })}
         </div>
       </div>
