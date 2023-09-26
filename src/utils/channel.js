@@ -39,3 +39,12 @@ export function getArticles(params){
   })
 
 }
+export function dislikeArticles(data){
+  return MyRequest.post({
+    url:"/article/dislikes",
+    data
+
+
+  })
+
+}

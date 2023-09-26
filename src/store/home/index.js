@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {getUserChannels,getAllChannels,delChannel, addChannel, getArticles} from '../../utils/channel'
+import {getUserChannels,getAllChannels,delChannel, addChannel, getArticles, dislikeArticles} from '../../utils/channel'
 import { getLocalChannels, hasToken, setLocalChannels } from "@/utils/storage";
 
 export  const getChannelsData = createAsyncThunk('getChannelsData',async (payload,{dispatch})=>{
@@ -85,7 +85,19 @@ export const getArticalData = createAsyncThunk('getArticalData',async({channelsI
   dispatch(getArticlesAction({list:res.data.results,timestamp:res.data.pre_timestamp,channel_id:channelsId,loadMoreData}))
   return res
 })
+export const dislikeArticle = createAsyncThunk('dislikeArticle',async (payload,{dispatch,getState})=>{
+  console.log(payload);
+  await dislikeArticles(payload)
+  console.log(getState());
+  const channelId  = getState().home.moreAction.channelId
+  const articles = getState().home.getArticlesInfo[channelId]?.list
+  console.log(channelId);
+  console.log(articles);
+  const  res = articles?.filter(item=>item.art_id!==payload.target)
+  console.log(res);
+  dispatch(getArticlesAction({...getState().home.getArticlesInfo,list:res,channel_id:channelId}))
 
+})
 
 // export const getChannelsData = createAsyncThunk("getChannelsData", (payload,{dispatch})=>{
 //   getUserChannels(payload).then(res=>{
@@ -104,7 +116,12 @@ export const homeSlice = createSlice({
   initialState:{
     getHomeChannelInfo:[],
     getAllChannelsInfo:[],
-    getArticlesInfo:{}
+    getArticlesInfo:{},
+    moreAction:{
+      visible:false,
+      articleId:'',
+      channelId:0
+    }
   },
   reducers:{
     getHomeChannelAction(state,action){
@@ -126,11 +143,15 @@ export const homeSlice = createSlice({
         }
       }
     }
+    ,
+    moreActions(state,{payload}){
+      state.moreAction = payload
+    }
    
     
   }
 })
 
-export const {getHomeChannelAction,getAllChannelsAction,getArticlesAction} = homeSlice.actions
+export const {getHomeChannelAction,getAllChannelsAction,getArticlesAction,moreActions} = homeSlice.actions
 
 export default homeSlice.reducer

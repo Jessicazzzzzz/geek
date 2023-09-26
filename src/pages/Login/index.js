@@ -38,7 +38,7 @@ export default function Login(props) {
    
     
     if(getCodeInfo?.data?.message){
-      console.log('123');
+      // console.log('123');
       Toast.show({
         icon: 'success',
         content: 'get code succeed',
@@ -89,7 +89,7 @@ export default function Login(props) {
    async onSubmit(values){
     //  await dispatch(getLoginAuth(values))
      await dispatch(fetchAuthData(values))
-     console.log("getLoginAuthInfo",getAuthInfo);
+    //  console.log("getLoginAuthInfo",getAuthInfo);
       Toast.show({
             content: `登录成功`,
            maskClickable: false,
